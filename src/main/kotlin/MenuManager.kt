@@ -1,8 +1,6 @@
-import java.util.Scanner
+import UserInputUtils.readUserInput
 
 class MenuManager {
-    private val scanner = Scanner(System.`in`)
-
     fun showMainMenu(): Int {
         println("Список архивов:")
         println("0. Создать архив")
@@ -17,16 +15,5 @@ class MenuManager {
         println("1. Просмотреть заметки")
         println("2. Выход")
         return readUserInput()
-    }
-
-    fun readUserInput(): Int {
-        while (true) {
-            val input = scanner.nextLine()
-            if (input.matches(Regex("\\d+"))) {
-                return input.toInt()
-            } else {
-                println("Неверный ввод. Пожалуйста, введите число.")
-            }
-        }
     }
 }

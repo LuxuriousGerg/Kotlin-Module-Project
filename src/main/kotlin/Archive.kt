@@ -1,3 +1,6 @@
+import UserInputUtils.readNonEmptyLine
+import UserInputUtils.readUserInput
+
 class Archive(val name: String) {
     private val notes = mutableListOf<Note>()
 
@@ -27,28 +30,6 @@ class Archive(val name: String) {
             val note = notes[choice]
             println("Заголовок: ${note.title}")
             println("Текст: ${note.content}")
-        }
-    }
-
-    private fun readNonEmptyLine(): String {
-        while (true) {
-            val input = readLine() ?: ""
-            if (input.isNotBlank()) {
-                return input
-            } else {
-                println("Поле не должно быть пустым. Пожалуйста, введите значение:")
-            }
-        }
-    }
-
-    private fun readUserInput(): Int {
-        while (true) {
-            val input = readLine() ?: ""
-            if (input.matches(Regex("\\d+"))) {
-                return input.toInt()
-            } else {
-                println("Неверный ввод. Пожалуйста, введите число.")
-            }
         }
     }
 }

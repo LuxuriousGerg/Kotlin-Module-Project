@@ -1,3 +1,6 @@
+import UserInputUtils.readNonEmptyLine
+import UserInputUtils.readUserInput
+
 class ArchiveManager(private val menuManager: MenuManager) {
     private val archives = mutableListOf<Archive>()
 
@@ -20,7 +23,7 @@ class ArchiveManager(private val menuManager: MenuManager) {
         }
         println("${archives.size}. Назад")
 
-        val choice = menuManager.readUserInput()
+        val choice = readUserInput()
         if (choice in 0 until archives.size) {
             val archive = archives[choice]
             handleArchive(archive)
@@ -34,16 +37,6 @@ class ArchiveManager(private val menuManager: MenuManager) {
                 1 -> archive.showNotes()
                 2 -> return
                 else -> println("Некорректный ввод. Пожалуйста, введите число от 0 до 2.")
-            }
-        }
-    }
-    private fun readNonEmptyLine(): String {
-        while (true) {
-            val input = readLine() ?: ""
-            if (input.isNotBlank()) {
-                return input
-            } else {
-                println("Поле не должно быть пустым. Пожалуйста, введите значение:")
             }
         }
     }
